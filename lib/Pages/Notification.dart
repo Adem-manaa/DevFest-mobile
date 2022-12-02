@@ -14,7 +14,7 @@ class _NotificationPageState extends State<NotificationPage> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-        backgroundColor: HexColor("#1B1B25"),
+        backgroundColor: Color(0xFF1B1B25),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -66,7 +66,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                 height: height * 0.1,
                                 width: width * 0.9,
                                 decoration: BoxDecoration(
-                                  color: HexColor("#272739"),
+                                  color: Color(0xFF272739),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Padding(
@@ -154,7 +154,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                               height: height*0.03,
                                               width: width*0.15,
                                               child: TextButton(onPressed: ()=>{}, child: Text("Suggestions",style: TextStyle(color: Colors.white,fontSize: 8),),style: ButtonStyle(
-                                                backgroundColor: MaterialStateProperty.all(HexColor('#FF771D')),
+                                                backgroundColor: MaterialStateProperty.all(Color(0xFFFF771D)),
                                               ),),
                                             )
                                           ],

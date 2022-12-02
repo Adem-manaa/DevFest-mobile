@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class DeviceDetails extends StatefulWidget {
   const DeviceDetails({Key? key}) : super(key: key);
@@ -19,7 +18,7 @@ class _DeviceDetailsState extends State<DeviceDetails> {
       body: SafeArea(
         child:Container(
           decoration: BoxDecoration(
-            color: HexColor('#272739'),
+            color: Color(0xFF272739),
 
           ),
           child: Container(
