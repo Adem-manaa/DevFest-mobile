@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iotai/Pages/DeviceDetails.dart';
+import 'package:iotai/Pages/Notification.dart';
 
 import 'Pages/IntroScreen.dart';
 
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const IntroScreen(),
+      home: const NotificationPage(),
     );
   }
 }
