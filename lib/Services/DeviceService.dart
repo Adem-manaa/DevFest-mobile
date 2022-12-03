@@ -1,6 +1,8 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
-featchDevices(int id) async{
-  var url= Uri.http('localhost:3000/device/${id}');
-  var res= await http.get(url);
-  return res.body;
+fetchDevices() async{
+  var res= await http.get(Uri.parse("http://192.168.229.114:3000/device/1"));
+  var output= jsonDecode(res.body);
+  return output['data'];
 }

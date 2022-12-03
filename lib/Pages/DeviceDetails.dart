@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'Notification.dart';
+
 class DeviceDetails extends StatefulWidget {
   const DeviceDetails({Key? key}) : super(key: key);
 
@@ -15,6 +17,113 @@ class _DeviceDetailsState extends State<DeviceDetails> {
     double width= MediaQuery.of(context).size.width;
     double height= MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color(0xFF272739),
+        actions: [
+          IconButton(
+              onPressed: ()=>{},
+              icon: Icon(Icons.bar_chart,color: Colors.white,size: 28,)
+          ),
+          IconButton(
+              onPressed: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotificationPage(id:1)),
+                );
+              },
+              icon: Icon(Icons.notifications,color: Colors.white,size: 28,)
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Color(0xFF1B1B25),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.person_pin,size: 60,color: Colors.white,),
+                    SizedBox(width: 14,),
+                    Text(
+                      'Manaa Adem',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                )
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.dashboard,
+              ),
+              title: const Text('Dashboard'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.devices,
+              ),
+              title: const Text('My devices'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.notifications,
+              ),
+              title: const Text('Notifications'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+              ),
+              title: const Text('Settings'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.contact_support,
+              ),
+              title: const Text('Support'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.contact_support,
+              ),
+              title: const Text('About'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.logout,
+              ),
+              title: const Text('Log Out'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
         child:Container(
           decoration: BoxDecoration(
@@ -26,25 +135,12 @@ class _DeviceDetailsState extends State<DeviceDetails> {
               image: DecorationImage(
                 image: AssetImage('images/background.png'),
                 fit: BoxFit.cover,
-                opacity: 0.7,
               ),
 
             ),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                  IconButton(onPressed: ()=>{}, icon: Icon(Icons.menu,color: Colors.white,size: 28,)),
-                  Row(
-                    children: [
-                      IconButton(onPressed: ()=>{}, icon: Icon(Icons.bar_chart,color: Colors.white,size: 28,)),
-                      IconButton(onPressed: ()=>{}, icon: Icon(Icons.notifications,color: Colors.white,size: 28,)),
-                    ],
-                  )
-                ],
-                ),
-                SizedBox(height: height*0.05),
+                SizedBox(height: height*0.07),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

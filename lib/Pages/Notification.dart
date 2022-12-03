@@ -1,22 +1,23 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:iotai/Services/NotificationService.dart';
+
+import '../Services/NotificationService.dart';
 
 class NotificationPage extends StatefulWidget {
   final int id;
-  const NotificationPage({Key? key,required this.id}) : super(key: key);
+  const NotificationPage({Key? key, required this.id}) : super(key: key);
 
   @override
   _NotificationPageState createState() => _NotificationPageState();
 }
-var notifications;
-var TodayNotif=[];
-var History=[];
+
 class _NotificationPageState extends State<NotificationPage> {
   @override
   initState() {
-
+    super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -62,118 +63,203 @@ class _NotificationPageState extends State<NotificationPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Today",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontFamily: 'Poppins',fontSize: 24),),
-                      ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          itemCount: 3,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: const EdgeInsets.fromLTRB(0,8,0,8),
-                              child: Container(
-                                height: height * 0.1,
-                                width: width * 0.9,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF272739),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                      Text(
+                        "Today",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Poppins',
+                            fontSize: 24),
+                      ),
+                      FutureBuilder(
+                        future: fetchNotification(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            final data = snapshot.data as List<dynamic>;
+                            return ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: data.length,
+                              itemBuilder: (context, int index) {
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                                  child: Container(
+                                    height: height * 0.1,
+                                    width: width * 0.9,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFF272739),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          16, 8, 16, 8),
+                                      child: Column(
                                         children: [
-                                          Text(
-                                            'Alert!',
-                                            style: TextStyle(color: Colors.white,fontFamily: 'Poppins',fontSize: 16,fontWeight: FontWeight.bold),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                data[index]['type'],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: 'Poppins',
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Icon(
+                                                Icons.warning_amber_outlined,
+                                                color: Colors.orange,
+                                              ),
+                                            ],
                                           ),
-                                          Icon(
-                                            Icons.warning_amber_outlined,
-                                            color: Colors.orange,
-                                          ),
+                                          Expanded(
+                                            child: Row(
+                                              children: [
+                                                Expanded(
+                                                    child: Text(
+                                                  data[index]['content'],
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 12,
+                                                      fontFamily: 'Poppins'),
+                                                )),
+                                                SizedBox(
+                                                  height: height * 0.03,
+                                                  width: width * 0.15,
+                                                  child: TextButton(
+                                                    onPressed: () => {},
+                                                    child: Text(
+                                                      "Suggestions",
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 8),
+                                                    ),
+                                                    style: ButtonStyle(
+                                                      backgroundColor:
+                                                          MaterialStateProperty
+                                                              .all(Color(
+                                                                  0xFFFF771D)),
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          )
                                         ],
                                       ),
-                                      Expanded(
-                                        child: Row(
-                                          children: [
-                                            Expanded(
-                                                child: Text(
-                                                    "The temperature in your kitchen is 35°, do you want to do something?. 2h",style: TextStyle(color: Colors.white,fontSize: 12,fontFamily: 'Poppins'),)),
-                                            SizedBox(
-                                              height: height*0.03,
-                                              width: width*0.15,
-                                              child: TextButton(onPressed: ()=>{}, child: Text("Suggestions",style: TextStyle(color: Colors.white,fontSize: 8),),style: ButtonStyle(
-                                                backgroundColor: MaterialStateProperty.all(HexColor('#FF771D')),
-                                              ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      )
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
+                                );
+                              },
                             );
-                          }),
-                      SizedBox(height: height*0.02,),
-                      Text("Hisotry",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontFamily: 'Poppins',fontSize: 24),),
-                      ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          itemCount: 10,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Padding(
-                              padding: const EdgeInsets.fromLTRB(0,8,0,8),
-                              child: Container(
-                                height: height * 0.1,
-                                width: width * 0.9,
-                                decoration: BoxDecoration(
-                                  color: HexColor("#272739"),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                          } else {
+                            return Text('wait');
+                          }
+                        },
+                      ),
+                      SizedBox(
+                        height: height * 0.02,
+                      ),
+                      Text(
+                        "Hisotry",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Poppins',
+                            fontSize: 24),
+                      ),
+                      FutureBuilder(
+                        future: fetchNotification(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            final data = snapshot.data as List<dynamic>;
+                            return ListView.builder(
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: data.length,
+                              itemBuilder: (context, int index) {
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                                  child: Container(
+                                    height: height * 0.1,
+                                    width: width * 0.9,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xFF272739),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.fromLTRB(
+                                          16, 8, 16, 8),
+                                      child: Column(
                                         children: [
-                                          Text(
-                                            'Alert!',
-                                            style: TextStyle(color: Colors.white,fontFamily: 'Poppins',fontSize: 16,fontWeight: FontWeight.bold),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                data[index]['type'],
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontFamily: 'Poppins',
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                              Icon(
+                                                Icons.warning_amber_outlined,
+                                                color: Colors.orange,
+                                              ),
+                                            ],
                                           ),
-                                          /*Icon(
-                                            Icons.warning_amber_outlined,
-                                            color: Colors.orange,
-                                          ),*/
+                                          Expanded(
+                                            child: Row(
+                                              children: [
+                                                Expanded(
+                                                    child: Text(
+                                                  data[index]['content'],
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 12,
+                                                      fontFamily: 'Poppins'),
+                                                )),
+                                                SizedBox(
+                                                  height: height * 0.03,
+                                                  width: width * 0.15,
+                                                  child: TextButton(
+                                                    onPressed: () => {},
+                                                    child: Text(
+                                                      "Suggestions",
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 8),
+                                                    ),
+                                                    style: ButtonStyle(
+                                                      backgroundColor:
+                                                          MaterialStateProperty
+                                                              .all(Color(
+                                                                  0xFFFF771D)),
+                                                    ),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          )
                                         ],
                                       ),
-                                      Expanded(
-                                        child: Row(
-                                          children: [
-                                            Expanded(
-                                                child: Text(
-                                                  "The temperature in your kitchen is 35°, do you want to do something?. 2h",style: TextStyle(color: Colors.white,fontSize: 12,fontFamily: 'Poppins'),)),
-                                            SizedBox(
-                                              height: height*0.03,
-                                              width: width*0.15,
-                                              child: TextButton(onPressed: ()=>{}, child: Text("Suggestions",style: TextStyle(color: Colors.white,fontSize: 8),),style: ButtonStyle(
-                                                backgroundColor: MaterialStateProperty.all(Color(0xFFFF771D)),
-                                              ),),
-                                            )
-                                          ],
-                                        ),
-                                      )
-                                    ],
+                                    ),
                                   ),
-                                ),
-                              ),
+                                );
+                              },
                             );
-                          }),
+                          } else {
+                            return Text('wait');
+                          }
+                        },
+                      ),
                     ],
                   ),
                 )

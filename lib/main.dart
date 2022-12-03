@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:iotai/Pages/Charts.dart';
+import 'package:iotai/Pages/IntroScreen.dart';
 import 'package:iotai/Pages/LogIn.dart';
 import 'package:iotai/Pages/Notification.dart';
 import 'package:iotai/Pages/SignUp.dart';
 import 'Pages/Devices.dart';
-import 'Pages/Start.dart';
+import 'Pages/Recommandations.dart';
 
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Poppins'),
       debugShowCheckedModeBanner: false,
-      home: NotificationPage(id: 1,),
+      home: IntroScreen(),
     );
   }
 }
