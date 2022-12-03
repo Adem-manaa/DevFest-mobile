@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({Key? key}) : super(key: key);
@@ -97,7 +96,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                               height: height*0.03,
                                               width: width*0.15,
                                               child: TextButton(onPressed: ()=>{}, child: Text("Suggestions",style: TextStyle(color: Colors.white,fontSize: 8),),style: ButtonStyle(
-                                                backgroundColor: MaterialStateProperty.all(HexColor('#FF771D')),
+                                                backgroundColor: MaterialStateProperty.all(Color(0xFFFF771D)),
                                               ),
                                               ),
                                             )
@@ -123,7 +122,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                 height: height * 0.1,
                                 width: width * 0.9,
                                 decoration: BoxDecoration(
-                                  color: HexColor("#272739"),
+                                  color: Color(0xFF272739),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Padding(

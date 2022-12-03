@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'DeviceDetails.dart';
+import 'Notification.dart';
+
 class DevicesPage extends StatefulWidget {
   @override
   _DevicesPageState createState() => _DevicesPageState();
@@ -43,7 +46,7 @@ class _DevicesPageState extends State<DevicesPage> {
                           ),
                         ),
                         Text(
-                          '02/12/2022',
+                          '03/12/2022',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 14,
@@ -54,7 +57,15 @@ class _DevicesPageState extends State<DevicesPage> {
                     Container(
                       width: width*0.27,
                     ),
-                    Icon(Icons.notifications,color: Colors.white,size: 30,),
+                    IconButton(
+                        onPressed: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => NotificationPage()),
+                          );
+                        },
+                        icon: Icon(Icons.notifications,color: Colors.white,size: 30,),
+                    ),
                   ],
                 ),
               ),
@@ -108,7 +119,12 @@ class _DevicesPageState extends State<DevicesPage> {
                               ),
                             ),
                             TextButton(
-                              onPressed: () =>{},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => DeviceDetails()),
+                                );
+                              },
                               child: Text(
                                 'View Details',
                                 style: TextStyle(
@@ -157,7 +173,7 @@ class _DevicesPageState extends State<DevicesPage> {
                             Padding(
                               padding: EdgeInsets.fromLTRB(width*0.05,width*0.05,0,width*0.01),
                               child: Text(
-                                'Device 34IS',
+                                'Device 35IS',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 22,
@@ -176,7 +192,12 @@ class _DevicesPageState extends State<DevicesPage> {
                               ),
                             ),
                             TextButton(
-                              onPressed: () =>{},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => DeviceDetails()),
+                                );
+                              },
                               child: Text(
                                 'View Details',
                                 style: TextStyle(
@@ -225,7 +246,7 @@ class _DevicesPageState extends State<DevicesPage> {
                             Padding(
                               padding: EdgeInsets.fromLTRB(width*0.05,width*0.05,0,width*0.01),
                               child: Text(
-                                'Device 34IS',
+                                'Device 36IS',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 22,
@@ -244,7 +265,12 @@ class _DevicesPageState extends State<DevicesPage> {
                               ),
                             ),
                             TextButton(
-                              onPressed: () =>{},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => DeviceDetails()),
+                                );
+                              },
                               child: Text(
                                 'View Details',
                                 style: TextStyle(
@@ -280,6 +306,82 @@ class _DevicesPageState extends State<DevicesPage> {
                         color: Color(0xFF272739),
                         borderRadius: BorderRadius.circular(14)
                     ),
+                  ),
+                  SizedBox(
+                    height: height*0.015,
+                  ),
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(width*0.05,width*0.05,0,width*0.01),
+                              child: Text(
+                                'Device 37IS',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(width*0.05,0,0,width*0.03),
+                              child: Text(
+                                'Home-Kitchen',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => DeviceDetails()),
+                                );
+                              },
+                              child: Text(
+                                'View Details',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(Color(0xFFFF771D)),
+                              ),
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0,0,width*0.05,0),
+                          child: Container(
+                            width: width*0.25,
+                            height: width*0.25,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    'images/ruuvi.jfif'),
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    width: width*0.9,
+                    height: height*0.2,
+                    decoration: BoxDecoration(
+                        color: Color(0xFF272739),
+                        borderRadius: BorderRadius.circular(14)
+                    ),
+                  ),
+                  SizedBox(
+                    height: height*0.02,
                   ),
                 ],
               )

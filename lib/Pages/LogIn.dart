@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iotai/Pages/SignUp.dart';
+
+import 'Devices.dart';
 
 class LogInPage extends StatefulWidget {
   @override
@@ -98,9 +101,15 @@ class _LogInPageState extends State<LogInPage> {
                     ),
                   ),
                   GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DevicesPage()),
+                      );
+                    },
                     child: Container(
                       width: width*0.9,
-                      height: height*0.07,
+                      height: height*0.077,
                       child: Center(
                         child: Text(
                           'Log In',
@@ -112,7 +121,7 @@ class _LogInPageState extends State<LogInPage> {
                       ),
                       decoration: BoxDecoration(
                           color: Color(0xFFFF771D),
-                          borderRadius: BorderRadius.circular(10)
+                          borderRadius: BorderRadius.circular(12)
                       ),
                     ),
                   )
@@ -173,6 +182,12 @@ class _LogInPageState extends State<LogInPage> {
                   ),
                 ),
                 GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpPage()),
+                    );
+                  },
                   child: Text(
                     'Sign Up',
                     style: TextStyle(

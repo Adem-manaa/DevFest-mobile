@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 class ChartPage extends StatefulWidget {
   @override
@@ -7,7 +8,89 @@ class ChartPage extends StatefulWidget {
 
 class _ChartPageState extends State<ChartPage> {
 
-  @override
+  var today = new DateTime.now();
+
+  late List<charts.Series<GraphPoint, DateTime>> _seriesData;
+
+  _generateData() {
+    var DataCalculs = [
+      //TODO: HNA CHANGIW  LA VALEUR ( EX : FI  LIGNE 1 CHANGIW 381.4  )ET LE NOMBRE DE LIGNES ( HNA 5) HOWA LE NOMBRE TA3 LES JOURS LI YKOUN FI AXE DES ABSCISSES
+      new GraphPoint(today, 3.1, Color(0xff1490F5)), // 1
+      new GraphPoint(new DateTime(today.year, today.month, today.day - 1), 8.4,
+          Color(0xff1490F5)), // 2
+      new GraphPoint(new DateTime(today.year, today.month, today.day - 2), 7.0,
+          Color(0xff1490F5)), //3
+      new GraphPoint(new DateTime(today.year, today.month, today.day - 3), 7,
+          Color(0xff1490F5)), //4
+      new GraphPoint(new DateTime(today.year, today.month, today.day - 4), 11.7,
+          Color(0xff1490F5)), //5
+    ];
+
+    // TODO : DATA1 : TA3 LES CALCULS      , DATA2 : TA3 GEOMETRY             DATA3 : TA3 ANIMALS
+
+    var DataGeometry = [
+      new GraphPoint(today, 2.1, Color(0xFF2CBAA4)),
+      new GraphPoint(new DateTime(today.year, today.month, today.day - 1), 2.4,
+          Color(0xFF2CBAA4)),
+      new GraphPoint(new DateTime(today.year, today.month, today.day - 2), 11.7,
+          Color(0xFF2CBAA4)),
+      new GraphPoint(new DateTime(today.year, today.month, today.day - 3), 8.7,
+          Color(0xFF2CBAA4)),
+      new GraphPoint(new DateTime(today.year, today.month, today.day - 4), 9.7,
+          Color(0xFF2CBAA4)),
+    ];
+
+    var DataAnimals = [
+      new GraphPoint(today, 1.1, Color(0xFFEDAE1D)),
+      new GraphPoint(new DateTime(today.year, today.month, today.day - 1), 4.2,
+          Color(0xFFEDAE1D)),
+      new GraphPoint(new DateTime(today.year, today.month, today.day - 2), 12.7,
+          Color(0xFFEDAE1D)),
+      new GraphPoint(new DateTime(today.year, today.month, today.day - 3), 20.7,
+          Color(0xFFEDAE1D)),
+      new GraphPoint(new DateTime(today.year, today.month, today.day - 4), 9.3,
+          Color(0xFFEDAE1D)),
+    ];
+    _seriesData.add(
+      charts.Series(
+        id: 'Daily Evaluation calculs',
+        colorFn: (GraphPoint Score, _) =>
+            charts.ColorUtil.fromDartColor(Score.color),
+        domainFn: (GraphPoint score, _) => score.time,
+        measureFn: (GraphPoint Score, _) => Score.score,
+        data: DataCalculs,
+      ),
+    );
+
+    _seriesData.add(
+      charts.Series(
+        id: 'Daily Evaluation geometry',
+        colorFn: (GraphPoint Score, _) =>
+            charts.ColorUtil.fromDartColor(Score.color),
+        domainFn: (GraphPoint score, _) => score.time,
+        measureFn: (GraphPoint Score, _) => Score.score,
+        data: DataGeometry,
+      ),
+    );
+    _seriesData.add(
+      charts.Series(
+        id: 'Daily Evaluation animals',
+        colorFn: (GraphPoint Score, _) =>
+            charts.ColorUtil.fromDartColor(Score.color),
+        domainFn: (GraphPoint score, _) => score.time,
+        measureFn: (GraphPoint Score, _) => Score.score,
+        data: DataAnimals,
+      ),
+    );
+  }
+
+  void initState() {
+    super.initState();
+    _seriesData = <charts.Series<GraphPoint, DateTime>>[];
+    _generateData();
+  }
+
+    @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
@@ -116,7 +199,26 @@ class _ChartPageState extends State<ChartPage> {
           ),
           body: Column(
             children: [
-              Image.asset('images/Logo.png'),
+              Expanded(
+                  child: charts.TimeSeriesChart(
+                    _seriesData,
+                    animate: true,
+                    animationDuration: Duration(seconds: 1),
+                    // Configure the default renderer as a line renderer. This will be used
+                    // for any series that does not define a rendererIdKey.
+                    //
+                    // This is the default configuration, but is shown here for  illustration.
+                    defaultRenderer: new charts.LineRendererConfig(),
+                    // Custom renderer configuration for the point series.
+                    customSeriesRenderers: [
+                      new charts.PointRendererConfig(
+                          customRendererId: 'customPoint')
+                    ],
+                    // Optionally pass in a [DateTimeFactory] used by the chart. The factory
+                    // should create the same type of [DateTime] as the data provided. If none
+                    // specified, the default creates local date time.
+                    dateTimeFactory: const charts.LocalDateTimeFactory(),
+                  )),
             ],
           ),
         )
@@ -124,3 +226,12 @@ class _ChartPageState extends State<ChartPage> {
   }
 }
 
+
+class GraphPoint {
+  final DateTime time;
+  final double score;
+  final Color color;
+  GraphPoint(this.time, this.score, this.color);
+}
+
+*/
