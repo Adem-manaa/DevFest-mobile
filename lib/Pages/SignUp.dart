@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'Devices.dart';
+
 class SignUpPage extends StatefulWidget {
   @override
   _SignUpPageState createState() => _SignUpPageState();
@@ -136,11 +138,16 @@ class _SignUpPageState extends State<SignUpPage> {
                       )
                   ),
                 ),
-                SizedBox(
+                Container(
                   width: width*0.9,
-                  height: height*0.08,
+                  height: height*0.077,
                   child: TextButton(
-                    onPressed: () =>{},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DevicesPage()),
+                      );
+                    },
                     child: Text(
                       'Sign Up',
                       style: TextStyle(
@@ -151,6 +158,9 @@ class _SignUpPageState extends State<SignUpPage> {
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Color(0xFFFF771D)),
                     ),
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
                   ),
                 ),
 

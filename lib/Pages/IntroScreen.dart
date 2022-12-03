@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:introduction_screen/introduction_screen.dart';
+import 'package:iotai/Pages/LogIn.dart';
 
 //:TODO : FIXING UI+ ADDING LOGO
 
@@ -43,12 +43,12 @@ class IntroScreen extends StatelessWidget {
       )
     ];
     return IntroductionScreen(
-      globalBackgroundColor: HexColor("#1B1B25"),
+      globalBackgroundColor: Color(0xFF1B1B25),
       pages: listPages,
       dotsDecorator: DotsDecorator(
         size: const Size.square(10.0),
         activeSize: const Size(20.0, 10.0),
-        activeColor: HexColor('#FF771D'),
+        activeColor: Color(0xFFFF771D),
         color: Colors.white,
         spacing: const EdgeInsets.symmetric(horizontal: 3.0),
         activeShape:
@@ -56,9 +56,12 @@ class IntroScreen extends StatelessWidget {
       ),
       skip: const Icon(Icons.skip_next),
       next: const Text(""),
-      done: const Text("Done", style: TextStyle(fontWeight: FontWeight.w700,color: Colors.white,fontFamily: 'Poppins')),
+      done: const Text("Done", style: TextStyle(fontWeight: FontWeight.w700,color: Color(0xFFFF771D),fontFamily: 'Poppins')),
       onDone: () {
-        // On Done button pressed
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => LogInPage()),
+        );
       },
       onSkip: () {
         // On Skip button pressed
