@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:iotai/Services/NotificationService.dart';
 
 class NotificationPage extends StatefulWidget {
-  const NotificationPage({Key? key}) : super(key: key);
+  final int id;
+  const NotificationPage({Key? key,required this.id}) : super(key: key);
 
   @override
   _NotificationPageState createState() => _NotificationPageState();
 }
-
+var notifications;
+var TodayNotif=[];
+var History=[];
 class _NotificationPageState extends State<NotificationPage> {
+  @override
+  initState() {
+
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;

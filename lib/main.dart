@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iotai/Pages/Charts.dart';
 import 'package:iotai/Pages/LogIn.dart';
+import 'package:iotai/Pages/Notification.dart';
 import 'package:iotai/Pages/SignUp.dart';
 import 'Pages/Devices.dart';
 import 'Pages/Start.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(fontFamily: 'Poppins'),
       debugShowCheckedModeBanner: false,
-      home: ChartPage(),
+      home: NotificationPage(id: 1,),
     );
   }
 }
