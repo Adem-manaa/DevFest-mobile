@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-
+import 'Devices.dart';
 import '../Services/NotificationService.dart';
 
 class NotificationPage extends StatefulWidget {
@@ -24,40 +24,132 @@ class _NotificationPageState extends State<NotificationPage> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
         backgroundColor: Color(0xFF1B1B25),
+        appBar: AppBar(
+          backgroundColor: Color(0xFF272739),
+          actions: [
+            IconButton(
+                onPressed: ()=>{},
+                icon: Icon(Icons.bar_chart,color: Colors.white,size: 28,)
+            ),
+            IconButton(
+                onPressed: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NotificationPage(id:1)),
+                  );
+                },
+                icon: Icon(Icons.notifications,color: Colors.white,size: 28,)
+            ),
+          ],
+        ),
+        drawer: Drawer(
+          child: ListView(
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Color(0xFF1B1B25),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: width*0.15,
+                        height: width*0.15,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          image: DecorationImage(
+                            image: AssetImage('images/moussa.jpg'),
+                            fit: BoxFit.cover,
+                            opacity: 0.7,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 14,),
+                      Text(
+                        'Aouinane Moussa',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
+                  )
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.dashboard,
+                ),
+                title: const Text('Dashboard'),
+                onTap: () {
+                  //Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.devices,
+                ),
+                title: const Text('My devices'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DevicesPage()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.notifications,
+                ),
+                title: const Text('Notifications'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.settings,
+                ),
+                title: const Text('Settings'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.contact_support,
+                ),
+                title: const Text('Support'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.contact_support,
+                ),
+                title: const Text('About'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.logout,
+                ),
+                title: const Text('Log Out'),
+                onTap: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                        onPressed: () => {},
-                        icon: Icon(
-                          Icons.menu,
-                          color: Colors.white,
-                          size: 28,
-                        )),
-                    Row(
-                      children: [
-                        IconButton(
-                            onPressed: () => {},
-                            icon: Icon(
-                              Icons.bar_chart,
-                              color: Colors.white,
-                              size: 28,
-                            )),
-                        IconButton(
-                            onPressed: () => {},
-                            icon: Icon(
-                              Icons.notifications,
-                              color: Colors.white,
-                              size: 28,
-                            )),
-                      ],
-                    )
-                  ],
-                ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(24, 8, 24, 8),
                   child: Column(
@@ -127,7 +219,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                                       fontFamily: 'Poppins'),
                                                 )),
                                                 SizedBox(
-                                                  height: height * 0.03,
+                                                  height: height * 0.034,
                                                   width: width * 0.15,
                                                   child: TextButton(
                                                     onPressed: () => {},
@@ -227,7 +319,7 @@ class _NotificationPageState extends State<NotificationPage> {
                                                       fontFamily: 'Poppins'),
                                                 )),
                                                 SizedBox(
-                                                  height: height * 0.03,
+                                                  height: height * 0.034,
                                                   width: width * 0.15,
                                                   child: TextButton(
                                                     onPressed: () => {},

@@ -31,6 +31,11 @@ class _DevicesPageState extends State<DevicesPage> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.white,
+                          image: DecorationImage(
+                            image: AssetImage('images/moussa.jpg'),
+                            fit: BoxFit.cover,
+                            opacity: 0.7,
+                          ),
                         ),
                       ),
                     ),
@@ -38,7 +43,7 @@ class _DevicesPageState extends State<DevicesPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hello, Adem',
+                          'Hello, Moussa',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -55,7 +60,7 @@ class _DevicesPageState extends State<DevicesPage> {
                       ],
                     ),
                     Container(
-                      width: width*0.27,
+                      width: width*0.23,
                     ),
                     IconButton(
                         onPressed: (){
@@ -146,7 +151,7 @@ class _DevicesPageState extends State<DevicesPage> {
                               borderRadius: BorderRadius.circular(12),
                               image: DecorationImage(
                                 image: AssetImage(
-                                    'images/ruuvi.jfif'),
+                                    'images/product.png'),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -219,7 +224,7 @@ class _DevicesPageState extends State<DevicesPage> {
                               borderRadius: BorderRadius.circular(12),
                               image: DecorationImage(
                                 image: AssetImage(
-                                    'images/ruuvi.jfif'),
+                                    'images/product1.jpg'),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -292,7 +297,7 @@ class _DevicesPageState extends State<DevicesPage> {
                               borderRadius: BorderRadius.circular(12),
                               image: DecorationImage(
                                 image: AssetImage(
-                                    'images/ruuvi.jfif'),
+                                    'images/product2.jpg'),
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -365,7 +370,7 @@ class _DevicesPageState extends State<DevicesPage> {
                               borderRadius: BorderRadius.circular(12),
                               image: DecorationImage(
                                 image: AssetImage(
-                                    'images/ruuvi.jfif'),
+                                    'images/product3.jpg'),
                                 fit: BoxFit.fill,
                               ),
                             ),
