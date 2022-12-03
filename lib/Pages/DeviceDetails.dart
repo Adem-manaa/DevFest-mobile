@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'Notification.dart';
+import 'Devices.dart';
 
 class DeviceDetails extends StatefulWidget {
   const DeviceDetails({Key? key}) : super(key: key);
@@ -46,10 +47,22 @@ class _DeviceDetailsState extends State<DeviceDetails> {
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.person_pin,size: 60,color: Colors.white,),
+                    Container(
+                      width: width*0.15,
+                      height: width*0.15,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white,
+                        image: DecorationImage(
+                          image: AssetImage('images/moussa.jpg'),
+                          fit: BoxFit.cover,
+                          opacity: 0.7,
+                        ),
+                      ),
+                    ),
                     SizedBox(width: 14,),
                     Text(
-                      'Manaa Adem',
+                      'Aouinane Moussa',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18,
@@ -64,7 +77,7 @@ class _DeviceDetailsState extends State<DeviceDetails> {
               ),
               title: const Text('Dashboard'),
               onTap: () {
-                Navigator.pop(context);
+                //Navigator.pop(context);
               },
             ),
             ListTile(
@@ -73,7 +86,10 @@ class _DeviceDetailsState extends State<DeviceDetails> {
               ),
               title: const Text('My devices'),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DevicesPage()),
+                );
               },
             ),
             ListTile(
@@ -135,6 +151,7 @@ class _DeviceDetailsState extends State<DeviceDetails> {
               image: DecorationImage(
                 image: AssetImage('images/background.png'),
                 fit: BoxFit.cover,
+                opacity: 0.7,
               ),
 
             ),
