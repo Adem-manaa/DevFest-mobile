@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'Devices.dart';
 import '../Services/NotificationService.dart';
+import 'Recommandations.dart';
 
 class NotificationPage extends StatefulWidget {
   final int id;
@@ -222,7 +223,12 @@ class _NotificationPageState extends State<NotificationPage> {
                                                   height: height * 0.034,
                                                   width: width * 0.15,
                                                   child: TextButton(
-                                                    onPressed: () => {},
+                                                    onPressed: () => {
+                                                      Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(builder: (context) => RecommandationPage()),
+                                                      )
+                                                    },
                                                     child: Text(
                                                       "Suggestions",
                                                       style: TextStyle(
@@ -322,7 +328,12 @@ class _NotificationPageState extends State<NotificationPage> {
                                                   height: height * 0.034,
                                                   width: width * 0.15,
                                                   child: TextButton(
-                                                    onPressed: () => {},
+                                                    onPressed: () => {
+                                                    Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(builder: (context) => RecommandationPage()),
+                                                      )
+                                                    },
                                                     child: Text(
                                                       "Suggestions",
                                                       style: TextStyle(
