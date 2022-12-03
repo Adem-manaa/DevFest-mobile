@@ -28,7 +28,7 @@ class _DeviceDetailsState extends State<DeviceDetails> {
               onPressed: (){
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => NotificationPage()),
+                  MaterialPageRoute(builder: (context) => NotificationPage(id:1)),
                 );
               },
               icon: Icon(Icons.notifications,color: Colors.white,size: 28,)

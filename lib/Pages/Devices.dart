@@ -61,7 +61,7 @@ class _DevicesPageState extends State<DevicesPage> {
                         onPressed: (){
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => NotificationPage()),
+                            MaterialPageRoute(builder: (context) => NotificationPage(id: 1,)),
                           );
                         },
                         icon: Icon(Icons.notifications,color: Colors.white,size: 30,),
